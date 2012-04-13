@@ -1,22 +1,26 @@
-.. npl documentation master file, created by
-   sphinx-quickstart on Fri Apr 13 16:33:34 2012.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
-Welcome to npl's documentation!
-===============================
+The npl language
+################
 
-Contents:
+**npl** is a general purpose logic system, simple, yet extremelly powerful. It is
+distributed under the `GNU General Public License V3 <http://www.gnu.org/licenses/gpl.txt>`_.
+
+Contents
+--------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
+   bnf
+   npl_foundation
+   npl_time
+   npl_arith
+   npl_negation
+   npl_questions
+   npl_install
+   npl_interfaces
 
+Support
+-------
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+There is a `mailing list <http://groups.google.es/group/nl-users>`_ for nlproject at google groups. You can also open an issue in `the tracker <http://github.com/enriquepablo/nl/issues>`_. Or mail me at <enriquepablo at google's mail domain>.
