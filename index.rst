@@ -11,8 +11,8 @@ Contents
 .. toctree::
    :maxdepth: 1
 
-   bnf
    npl_foundation
+   bnf
    npl_time
    npl_arith
    npl_negation
