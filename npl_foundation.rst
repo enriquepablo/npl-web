@@ -120,7 +120,9 @@ This language had two flavours: DL, and full. It is an ontology language
 that can be processed by reasoners to extract consecuences.
 It has basic class predicates, and you have UC: you can have
 anonymous classes defined by predicates. But, in the DL flavour,
-you cannot treat classes as individuals. In the full flavour,
+you cannot treat classes as individuals:
+you cannot have variables ranging over them.
+In the full flavour,
 you can, but you are not guaranteed that the system will be
 consistent under a reasoner. And it is the full flavour that would
 provide full (natural) expresivity.
@@ -138,38 +140,38 @@ basic predicates of set theory in their barest form, in something
 like what follows.
 
 We call this theory NPL.
-In it, we only use implication "->"
-and conjunction "&"
+In it, we only use implication ``->``
+and conjunction ``&``
 as logical connectives,
 and the only production rule is modus ponens.
-Variables are denoted by "x1", "x2"...
+Variables are denoted by ``x1``, ``x2``...
 and are always universally quantified in their outernmost scope (sentence);
-and individuals are denoted by any secuence of lower case letters.
-The predicates are "isa" (for belongs to) and "are" (for is
+and individuals are denoted by any sequence of lower case letters.
+The predicates are ``isa`` (for belongs to) and ``are`` (for is
 a subset of),
 are used in an infix form,
-and we have that:
+and we have that::
 
   x1 isa x2 & x2 are x3 -> x1 isa x3
 
   x1 are x2 & x2 are x3 -> x1 are x3
 
-Now to the representation of natural verbs.
+Now to the representation of other natural verbs.
 For simplicity, we will only consider natural verbs that represent
 binary relations, so a natural sentence with such a verb would have
 the form of a triplet subject-verb-object.
-To represent this relation, we use a ternary operator "f"
+To represent this relation, we use a ternary operator ``f``
 (from fact). So, a non-copular sentence, in our system, would
-have the form "f(s, v, o)" (where "s", "v", and "o" are just
+have the form ``f(s, v, o)`` (where ``s``, ``v``, and ``o`` are just
 individuals of the theory).
-Since "f" is an operator, this
-sentence represents just another individual of the theory, and has
+Since ``f`` is an operator, this
+sentence stands for just another individual of the theory, and has
 no truth value.
 We will call this sort of individuals "facts".
 To attach truth value to facts, we use the set predicates,
 to relate them with another individual of the theory,
-"fact". So a complete non-copular sentence, in this theory,
-would have the form (with prefix operators and infix predicates):
+``fact``. So a complete non-copular sentence, in this theory,
+would have the form (with prefix operators and infix predicates)::
 
   f(s, v, o) isa fact
 
@@ -182,14 +184,14 @@ and that any new term we may want to introduce,
 when modelling any kind of discourse,
 will be quantifiable by first order variables.
 Those symbols that can not be quantified,
-like "are" or "isa" or "f",
+like ``are`` or ``isa`` or ``f``,
 are so few that do not merit to be so.
 
 We can be even more fine-grained. If we call "predication" to a
 pair verb-object, we may want to have variables that range over
-them. To do this, we can define a new operator "p", that produces
-"predication" individuals, so that now the "f" operator takes 2 operands,
-the subject and a "predication", to have something like:
+them. To do this, we can define a new operator ``p``, that produces
+predication individuals, so that now the ``f`` operator takes 2 operands,
+the subject and a predication, to have something like::
 
   p(v, o) isa predication
 
@@ -197,12 +199,12 @@ the subject and a "predication", to have something like:
 
 And, to show a little more of the power that we can obtain from
 such a system, note that facts and predications are individuals
-of the theory, so we can use them where we have used "s" or "o",
+of the theory, so we can use them where we have used ``s`` or ``o``,
 to build as complex a sentence as we may want (I think it wouldn't make
-much sense to use them in place of "v").
+much sense to use them in place of ``v``).
 
 An example developed on top of this theory might be (using a primitive
-universal set "word"):
+universal set ``word``)::
 
   person isa word
 
@@ -225,7 +227,7 @@ universal set "word"):
   ->
   f(x3, x2, x1) isa fact
 
-Now, "john loves sue" will imply that "sue loves john".
+Now, ``john loves sue`` will imply that ``sue loves john``.
 
 
-There is a semantics for this language `here <NL>`_.
+There is a semantics for this theory `here <NL>`_.
