@@ -132,7 +132,7 @@ textarea {
 }
 body {
   margin: 0;
-  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 18px;
   color: #333333;
@@ -322,7 +322,7 @@ a:hover {
 }
 p {
   margin: 0 0 9px;
-  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -525,6 +525,7 @@ cite {
   font-style: normal;
 }
 code,
+tt.literal,
 pre {
   padding: 0 3px 2px;
   font-family: Menlo, Monaco, "Courier New", monospace;
@@ -534,6 +535,7 @@ pre {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
+tt.literal,
 code {
   padding: 2px 4px;
   color: #d14;
@@ -2909,7 +2911,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar-search .search-query {
   padding: 4px 9px;
-  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
@@ -3977,6 +3979,11 @@ a.thumbnail:hover {
 /* npl */
 #menu {
   margin-top: 80px;
+  font-size: 16px;
+  font-weight: 800;
+}
+#menu li {
+  line-height: 22px;
 }
 
 .headerlink {
@@ -3985,4 +3992,9 @@ a.thumbnail:hover {
 
 .headerlink:hover {
   color: #dddddd;
+}
+
+span.pre {
+  color: #222;
+
 }
