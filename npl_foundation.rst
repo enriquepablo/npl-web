@@ -59,7 +59,24 @@ classes of predicates, etc. In first order predicate logic,
 you cannot have variables ranging over predicates. In the natural language,
 it is obvious that you can do the equivalent.
 
-For Frege, this problem was solved with unrestriced comprehension,
+And the equivalent means that
+in the natural languages,
+you can use variables,
+that they are first order,
+and that they can range over predicates.
+As proof, I will propose the sentence:
+"if Mary wants something, she gets it".
+I will take that this sentence is equivalent to
+"for all X, if mary wants X, mary gets X".
+So, we have constructs that
+behave very much like variables.
+And "to go to the cinema" can fall under X,
+so predicates can be in the range of variables.
+And also "an apple" can fall under X,
+so variables are first order,
+there is only one order of variables.
+
+For Frege, this problem was solved with unrestricted comprehension,
 (or rather, its equivalent in his system,)
 that establishes a correspondence between predicates and sets.
 Variables range over sets, and UC gives you a set for each predicate,
@@ -79,7 +96,9 @@ what Russell broke in Frege's system
 was his Basic Law V, that corresponds to UC
 and allowed him to kind of reduce the system
 to first order.
-Because the natural logic is obviously first order.
+Because the natural logic is obviously
+(as I tried to show above)
+first order.
 
 From then on, axiomatic set theory evolved, without UC,
 to grow a range of esoteric axioms that quite estranged it from
