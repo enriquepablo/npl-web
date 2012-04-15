@@ -230,4 +230,4 @@ universal set ``word``)::
 Now, ``john loves sue`` will imply that ``sue loves john``.
 
 
-There is a semantics for this theory `here <NL>`_.
+There is a semantics for this theory `here <http://enriquepablo.github.com/nlproject/NL.html>`_.

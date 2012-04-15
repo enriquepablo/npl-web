@@ -5,6 +5,10 @@ Dependencies
 ------------
 
  * Python 2.7
+
+To install the software, you will need:
+
+ * buildout
  * virtualenv
  * git
  * UNIX ?
