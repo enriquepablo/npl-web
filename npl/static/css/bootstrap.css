@@ -3978,6 +3978,7 @@ a.thumbnail:hover {
 
 /* npl */
 #menu {
+  position: static;
   margin-top: 80px;
   font-size: 16px;
   font-weight: 800;

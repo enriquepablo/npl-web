@@ -17,11 +17,10 @@ be taking pieces from
 Sentences
 ----------
 
-::
-
-    sentence : statement
-             | question
-             | order
+.. productionlist::
+    sentence : `statement`
+             : | `question`
+             : | `order`
 
 Sentences are the top level grammatical elements. These are the elements that
 can be entered (told or asked) into npl's knowledge base (kb). There are 3
@@ -32,12 +31,9 @@ do different things to the kb.
 Order: extend
 -------------
 
-::
-
-    order : EXTEND DOT
-
+.. productionlist::
+    order : `EXTEND` `DOT`
     EXTEND : "extend"
-
     DOT : "."
 
 If you issue the order ``extend.``, the kb will be extended to all its
@@ -46,12 +42,9 @@ logical consecuences.
 Order: import
 -------------
 
-::
-
-    order : IMPORT URI DOT
-
+.. productionlist::
+    order : `IMPORT` `URI` `DOT`
     IMPORT : "import"
-
     URI : '"' <An URI> '"'
 
 If you issue the order ``import "http://example.com/ont.npl".``, the kb will
@@ -60,11 +53,10 @@ download the file at the URI and load it into the kb.
 Statements
 ----------
 
-::
-
-    statement : definition DOT
-              | fact DOT
-              | rule DOT
+.. productionlist::
+    statement : `definition` `DOT`
+              : | `fact` `DOT`
+              : | `rule` `DOT`
 
 Statements are asserted: they have truth value.
 There are 3 main forms of statements, all ended with a dot, which we will
@@ -76,11 +68,10 @@ basically implication) among the relations expressed in the terms.
 Definition of terms
 -------------------
 
-::
-
-    definition : noun-def
-               | name-def
-               | verb-def
+.. productionlist::
+    definition : `noun_def`
+               : | `name_def`
+               : | `verb_def`
 
 There are 3 types of terms we can define. We will call them (proper) names,
 nouns, and verbs.
@@ -88,14 +79,10 @@ nouns, and verbs.
 Noun definitions
 ~~~~~~~~~~~~~~~~
 
-::
-
-    noun-def : TERM ARE TERM
-
+.. productionlist::
+    noun_def : `TERM` `ARE` `TERM`
     ARE : "are"
-
-    TERM : <a lower case letter followed by any number of lower case letters,
-              underscores, and digits. 2 underscores in a row are forbidden>
+    TERM : <a lower case letter followed by any number of lower case letters, underscores, and digits. 2 underscores in a row are forbidden>
 
 We define a new noun by relating it with another (already defined) noun through
 the reserved word ``are``. To get started, we use a primitive predefined noun,
@@ -107,10 +94,8 @@ For more examples, you can look at
 Name definitions
 ~~~~~~~~~~~~~~~~
 
-::
-
-    name-def : TERM ISA TERM
-
+.. productionlist::
+    name_def : `TERM` `ISA` `TERM`
     ISA : "isa"
 
 Proper names are defined relating them with a noun through the reserved word
@@ -157,45 +142,34 @@ introduced predicates and facts.
 Facts
 -----
 
-::
-
-    fact : subject predicate
-
-    subject : TERM
+.. productionlist::
+    fact : `subject` `predicate`
+    subject : `TERM`
 
 Facts are composed of a subject and a predicate. The subject is
 a name, a noun or a verb.
 
-::
-
-    predicate : LBRACK verb modification RBRACK
-              | LBRACK verb RBRACK
-
-    verb : TERM
-
+.. productionlist::
+    predicate : `LBRACK` `verb` `modification` `RBRACK`
+              : | `LBRACK` `verb` `RBRACK`
+    verb : `TERM`
     LBRACK : "["
-    
     RBRACK : "]"
 
 The predicate is a complex term enclosed in square brackets, composed of a verb
 and an (optional) modification.
 
-::
-
-    modification : modifier COMMA modification
-                 | modifier'
-
+.. productionlist::
+    modification : `modifier` `COMMA` `modification`
+                 : | `modifier`
     COMMA : ","
 
 A modification is one or more modifiers, separated by commas.
 
-::
-
-    modifier : LABEL object
-
-    object : TERM
-           | predicate
-
+.. productionlist::
+    modifier : `LABEL` `object`
+    object : `TERM`
+           : | `predicate`
     LABEL : <same pattern as TERM>
 
 A modifier is composed of a label and an object, that can be any kind of
@@ -209,38 +183,32 @@ verb, and ``img1`` is a modifier with label ``what``.
 Definition of verbs
 -------------------
 
-::
-
-    verb-def : A TERM CAN TERM LPAREN verbs RPAREN modification-def
-             | A TERM CAN TERM modification-def
-             | A TERM CAN TERM LPAREN verbs RPAREN
-
-    verbs : verb COMMA verbs
-          | verb
-
+.. productionlist::
+    verb_def : `A` `TERM` `CAN` `TERM` `LPAREN` `verbs` `RPAREN` `modification_def`
+             : | `A` `TERM` `CAN` `TERM` `modification_def`
+             : | `A` `TERM` `CAN` `TERM` `LPAREN` `verbs` `RPAREN`
+    verbs : `verb` `COMMA` `verbs`
+          : | `verb`
     CAN : "can"
-
     A : "a"
 
 In the definition of a verb (with name given as the second TERM in the
-verb-def) we can specify 3 different things. First, the type of
+verb_def) we can specify 3 different things. First, the type of
 term that can act as subject in a fact where the new verb forms the predicate
 (given by the first TERM in the definition); second, the
 (already defined) verb(s) from which we derive the new verb (given in the
 verbs part of the definition); and third, the modifiers that the verb can take
-to form the predicate (the modification-def). Both the verbs part or the
-modification-def part can be omitted. Omitting the verbs, we assume its
-parent to be ``exists``; omittin the modification-def, the verb will
+to form the predicate (the modification_def). Both the verbs part or the
+modification_def part can be omitted. Omitting the verbs, we assume its
+parent to be ``exists``; omittin the modification_def, the verb will
 inherit those of its parents.
 
-::
+.. productionlist::
+    modification_def : `mod_def` `COMMA` `modification_def`
+                     : | `mod_def`
+    mod_def : `LABEL` `A` `TERM`
 
-    modification-def : mod-def COMMA modification-def
-                     | mod-def
-
-    mod-def : LABEL A TERM
-
-The modifiers that a verb can take are specified through mod-defs, where we
+The modifiers that a verb can take are specified through mod_defs, where we
 give the label that the modifier will take, connected through the reserved word
 ``a`` with the type of terms that can be used as that modifier.
 
@@ -251,8 +219,8 @@ we define verbs that express actions that a person can perform on
 content. For this we use the primitive predefined verb
 we mentioned earlier: ``exists``.
 
-Derived verbs inherit the mod-defs that they do not override.
-Therefore, we do not need to specify a mod-def for a child verb if it
+Derived verbs inherit the mod_defs that they do not override.
+Therefore, we do not need to specify a mod_def for a child verb if it
 coincides with one of its parents.
 
 With these verbs, we can state facts such as ``pete [owns what doc1].``
@@ -261,27 +229,18 @@ or ``sue [edit what img2].``
 Rules
 -----
 
-::
-
-    rule : IF COLON conditions SEMICOLON THEN COLON consecuences
-
-    conditions : conditions SEMICOLON condition
-               | condition
-
-    condition : fact
-              | name-def
-
-    consecuences : consecuences SEMICOLON consecuence
-                 | consecuence
-
-    consecuence : fact
-
+.. productionlist::
+    rule : `IF` `COLON` `conditions` `SEMICOLON` `THEN` `COLON` `consecuences`
+    conditions : `conditions` `SEMICOLON` `condition`
+               : | `condition`
+    condition : `fact`
+              : | `name_def`
+    consecuences : `consecuences` `SEMICOLON` `consecuence`
+                 : | `consecuence`
+    consecuence : `fact`
     IF : "if"
-
     COLON : ":"
-
     SEMICOLON : ";"
-
     THEN : "then"
 
 A rule consists of 2 sets of statements, the conditions and the consecuences.
@@ -311,15 +270,10 @@ term matches a variable, it does so for all its occurrences within the rule.
 
 For a first example, we need to add a couple more of BNF rules:
 
-::
-
-    subject : VAR
-
-    object : VAR
-
-    VAR : <an uppercase letter followed by any number of lower case letters,
-           digits and underscores and ending in any number of digits. Double
-           underscores are forbidden.>
+.. productionlist::
+    subject : `VAR`
+    object : `VAR`
+    VAR : <an uppercase letter followed by any number of lower case letters, digits and underscores and ending in any number of digits. Double underscores are forbidden.>
 
 So, for example, in
 `line 23 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L23>`_
@@ -333,9 +287,8 @@ the system will conclude that ``doc1 [located where ctx2]``.
 Predicate variables
 -------------------
 
-::
-
-    predicate : LBRACK VAR RBRACK
+.. productionlist::
+    predicate : `LBRACK` `VAR` `RBRACK`
 
 We have mentioned that we can use predicates as objects in the modifiers of other
 predicates. This means that, in rules, we must be able to use variables that
@@ -357,10 +310,9 @@ the system will conclude that ``sue [view what doc1]``.
 Verb variables
 --------------
 
-::
-
-    predicate : LBRACK VAR VAR RBRACK
-              | LBRACK VAR modification RBRACK
+.. productionlist::
+    predicate : `LBRACK` `VAR` `VAR` `RBRACK`
+              : | `LBRACK` `VAR` `modification` `RBRACK`
 
 Since we can have verbs as subject or object in facts, we need to be able to
 use variables in rules that range over verbs. We do this by capitalizing the
@@ -386,17 +338,13 @@ If, in the rule in
 `line 65 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L65>`_,
 we had not wanted to relate the context in which the content
 is located with the context in which the person is allowed to do the content action,
-we might have said:
+we might have said::
 
-``if:``
-
-    ``Person1 [wants that Person1, do [Content_actionVerb1 Content_action1]];``
-
-    ``Person1 [may what Content_actionVerb1];``
-
-``then:``
-   
-    ``Person1 [Content_action1].``
+    if:
+        Person1 [wants that Person1, do [Content_actionVerb1 Content_action1]];
+        Person1 [may what Content_actionVerb1];
+    then:
+        Person1 [Content_action1].
 
 
 Let's take a look at the construct ``[Content_actionVerb1 Content_action1]``.
@@ -409,16 +357,11 @@ second condition. Thus the oddly redundant form.
 Noun variables
 --------------
 
-::
-
-    subject : varvar
-
-    object : varvar
-
-    varvar :  VAR LPAREN VAR RPAREN
-
+.. productionlist::
+    subject : `varvar`
+    object : `varvar`
+    varvar :  `VAR` `LPAREN` `VAR` `RPAREN`
     LPAREN : "("
-
     RPAREN : ")"
 
 The same we have said about verb variables can be said of noun variables.
