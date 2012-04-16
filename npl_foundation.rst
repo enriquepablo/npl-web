@@ -38,7 +38,7 @@ and he had classes (or value-ranges),
 connected through class predicates (belongs, subclass).
 He also had an unlimited amount
 of other predicates
-(what he called concepts).
+(what he called concepts)
 (see `here <http://www.iep.utm.edu/frege/#H2>`_).
 With this,
 he very nearly had
@@ -152,7 +152,7 @@ Russell's paradox apply,
 that same paradox that toppled Frege's edifice.
 As Paul Bernays
 `stated in the introduction <http://books.google.es/books?id=IopfGCCME6wC&pg=PA39&lpg=PA39&dq=idealkalkul&source=bl&ots=aQVvv64ZZ2&sig=OburKovLjfZFDMlEyP4a3QSyec4&hl=en&sa=X&ei=Rc-LT6fkL4qi0QXc6fy_CQ&redir_esc=y#v=onepage&q=idealkalkul&f=false>`_
- to his "Axiomatic set theory":
+to his "Axiomatic set theory":
 
   "What really is excluded by the antinomies is only
   that interpretation (easily suggested at first)
