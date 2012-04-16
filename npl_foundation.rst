@@ -39,6 +39,7 @@ connected through class predicates (belongs, subclass).
 He also had an unlimited amount
 of other predicates
 (what he called concepts).
+(see `here <http://www.iep.utm.edu/frege/#H2>`_).
 With this,
 he very nearly had
 all the elements he needed
@@ -83,6 +84,7 @@ To bridge this gap,
 Frege had his Basic Law V,
 that basically established a correspondence
 between classes and concepts.
+(again, see `here <http://www.iep.utm.edu/frege/#H2>`_).
 This allowed him to unify
 the use of his 2 orders of variables.
 But along came Bertrand Russell,
@@ -137,7 +139,7 @@ language. And that is the ability to have variables that range over
 predicates, the ability to express predicates through constraints,
 classes of predicates, etc. In first order predicate logic,
 you cannot have variables ranging over predicates.
-In the natural language, I hope I have shown
+In the natural languages, I hope I have shown
 that you can do the equivalent.
 
 The natural way out of this problem is
@@ -148,19 +150,19 @@ predicates and sets (thus classes).
 But if we add UC to the system,
 Russell's paradox apply,
 that same paradox that toppled Frege's edifice.
-As Paul Bernays stated
-in the introduction to his "Axiomatic set theory" [1]:
+As Paul Bernays
+`stated in the introduction <http://books.google.es/books?id=IopfGCCME6wC&pg=PA39&lpg=PA39&dq=idealkalkul&source=bl&ots=aQVvv64ZZ2&sig=OburKovLjfZFDMlEyP4a3QSyec4&hl=en&sa=X&ei=Rc-LT6fkL4qi0QXc6fy_CQ&redir_esc=y#v=onepage&q=idealkalkul&f=false>`_
+ to his "Axiomatic set theory":
 
-"What really is excluded by the antinomies is only
-that interpretation (easily suggested at first)
-of set theory which finds its formal expression
-in the calculus called newly Idealkalkül by
-Hermes and Scholz, whose domain of individuals
-contains for every predicate ``B`` an assigned
-individual ``p`` such that::
+  "What really is excluded by the antinomies is only
+  that interpretation (easily suggested at first)
+  of set theory (...) whose domain of individuals
+  contains for every predicate ``B`` an assigned
+  individual ``p`` such that::
 
-    (x)(x € p <-> B(x)).
-"
+    (x)(x € p <-> B(x))."
+
+  -- Paul Bernays
 
 So with first order logic
 we come to exactly the same point
@@ -180,17 +182,17 @@ It is an ontology language
 that can be processed by reasoners
 to extract consecuences.
 It has basic class predicates,
-and it has have UC:
+and it has UC:
 you can have
 anonymous classes defined by predicates.
 But, in the DL flavour,
 you cannot treat classes as individuals:
 you cannot have variables ranging over them.
 In the full flavour,
-you can,
-but you are not guaranteed
-that the system will be
-consistent under a reasoner.
+you can, but,
+as they say,
+"It is unlikely that any reasoning software will be able to support every feature of OWL Full"
+(see `here <http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OwlVarieties>`_).
 And it is the full flavour
 that would provide full (natural) expresivity.
 
@@ -215,7 +217,9 @@ Paul Bernays, in the text quoted above,
 after dismissing UC,
 goes on to provide a number of additional axioms,
 like the axiom of choice or the axiom of infinity,
-what he called constructive axioms.
+what he called constructive axioms,
+that gave further form to the set predicates
+(and quite estranged them from the natural copulas).
 But his aim was different from ours.
 He wanted a formalism to base on it
 the whole of mathematics,
@@ -292,7 +296,7 @@ the subject and a predication, to have something like::
 
   f(s, p(v, o)) isa fact
 
-And, to show a little more of the power that we can obtain from
+And, to show a little more of what can be obtained from
 such a system, note that facts and predications are individuals
 of the theory, so we can use them where we have used ``s`` or ``o``,
 to build as complex a sentence as we may want (I think it wouldn't make
@@ -325,7 +329,7 @@ universal set ``word``)::
   ->
   f(x3, x2, x1) isa fact
 
-Now, ``john loves sue`` will imply that ``sue loves john``.
+Now, ``john loves yoko`` will imply that ``yoko loves john``.
 
 
 There is a semantics for this theory `here <http://enriquepablo.github.com/nlproject/NL.html>`_.
