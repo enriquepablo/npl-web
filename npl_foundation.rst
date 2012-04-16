@@ -154,13 +154,13 @@ As Paul Bernays
 `stated in the introduction <http://books.google.es/books?id=IopfGCCME6wC&pg=PA39&lpg=PA39&dq=idealkalkul&source=bl&ots=aQVvv64ZZ2&sig=OburKovLjfZFDMlEyP4a3QSyec4&hl=en&sa=X&ei=Rc-LT6fkL4qi0QXc6fy_CQ&redir_esc=y#v=onepage&q=idealkalkul&f=false>`_
 to his "Axiomatic set theory":
 
-  "What really is excluded by the antinomies is only
+  What really is excluded by the antinomies is only
   that interpretation (easily suggested at first)
   of set theory (...) whose domain of individuals
   contains for every predicate ``B`` an assigned
   individual ``p`` such that::
 
-    (x)(x € p <-> B(x))."
+    (x)(x € p <-> B(x)).
 
   -- Paul Bernays
 
@@ -213,10 +213,11 @@ I mean defined by just equality, extensionality
 and a definition of subset,
 and perhaps some boundary axioms
 to define a universal and an empty "set".
+In contrast,
 Paul Bernays, in the text quoted above,
 after dismissing UC,
 goes on to provide a number of additional axioms,
-like the axiom of choice or the axiom of infinity,
+like the axiom of choice or the axiom of infinity;
 what he called constructive axioms,
 that gave further form to the set predicates
 (and quite estranged them from the natural copulas).
@@ -228,7 +229,7 @@ that would contain all mathematical structures.
 We do not need a closed theory,
 nor an initial complex structure
 as model for our theory.
-All we need is a simple starting theory,
+All we need is a simple and empty starting theory,
 that allows us to extend it with
 ad hoc new individuals and axioms
 to model each particular informal theory.
@@ -267,7 +268,7 @@ sentence stands for just another individual of the theory, and has
 no truth value.
 We will call this sort of individuals "facts".
 To attach truth value to facts, we use the set predicates,
-to relate them with another individual of the theory,
+to put them in relation with another individual of the theory,
 ``fact``. So a complete non-copular sentence, in this theory,
 would have the form (with prefix operators and infix predicates)::
 
