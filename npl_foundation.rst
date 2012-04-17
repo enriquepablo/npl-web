@@ -317,7 +317,7 @@ universal set ``word``)::
 
   woman are person
 
-  sue isa woman
+  yoko isa woman
 
   verb isa word
 
