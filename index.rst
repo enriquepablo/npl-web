@@ -17,6 +17,7 @@ Contents
    npl_arith
    npl_negation
    npl_questions
+   npl_macros
    npl_install
    npl_interfaces
 
