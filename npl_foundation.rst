@@ -18,7 +18,7 @@ and head on to the `reference <npl_ref>`_ or the `tutorial <tut>`_.
 And if you are a logician,
 please bear in mind that
 I am a self taught "logician",
-and do not expect the orthodox academic terminology
+so you should not expect the orthodox academic terminology
 of any established line of thought.
 
 Historical introduction
