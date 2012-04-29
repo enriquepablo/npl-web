@@ -11,18 +11,54 @@ In this section we will try to develop a not so simple ontology that might be us
 
 The metadata backend would therefore know about content types, users, permissions, workflows, etc., and is the only part we will develop here.
 
-So let's start by defining a ``person`` noun::
+Anatomy of sentences in npl
+---------------------------
+
+There are 4 basic kinds of sentences in npl. The first kind (noun definitions) have the form "<noun1> are <noun2>", and are used to define nouns in terms of other nouns. Nouns are akin to classes, where proper names would be the elements of those classes. Defining a noun in that way would mean that all individuals (proper names) of noun1 are also of noun2; that all noun1 are noun2.
+
+The second kind of sentence (name definitions) have the form "<name> isa <noun>", and are used to define proper names in terms of nouns.
+
+The third kind have the form "<subject> [<verb> <label> <object>(, <label2> <object2> ...)] <time>", and are used to assert facts. They have a subject, that can be any kind of term, and a predicate, enclosed in square brackets. The predicate is itself composed of a verb and any number of objects (or modifiers). The modifiers are composed of a label and another term, of any kind. Finally, we have a term of type time.
+
+The fourth kind have the form "a <term> can <verb> <label> a <term>(, <label2> a <term2> ...)", and are used to define verbs in terms of the kind of subject and modifiers that they can take on facts.
+
+CMS
+---
+
+So let's start our CMS logic by defining a ``person`` noun::
 
   person are thing.
 
-The first verb that affects people that we are going to define is ``wants``: Whenever a user attempts to perform an action on the system (calls a URL, clicks a button, etc.), we will tell the metadata backend (npl) that the user wants to perform the action. A basic pattern for the metadata rules will be "if someone wants to do such thing, and this and that conditions are met, (s)he does such thing". Therefore, a basic pattern for the views will be to tell nl that a user wants to do something, extend the knowledge base, and then ask whether the user does it::
+Now we can define ``person`` individuals, identified by proper names of ``person``. For example, we can name a ``person`` ``john``::
 
-  a person can wants what a exists.
+  john isa person.
 
-We need a "content" class of things. ``content`` will be the noun of all content objects, and the various content types (e.g., document) will be classes derived from ``content``::
+We also need a "content" class of things. ``content`` will be the noun of all content objects, and the various content types (e.g., document) will be nouns derived from ``content``::
 
   content are thing.
   document are content.
+  image are content.
+
+Thus we can have content individuals::
+
+  img1 isa image.
+
+And now, we will define verbs that refer to the different actions that people can perform with content objects (or individuals). First, we define an abstract ``action`` verb that will be the ancestor of any other action::
+
+  a person can action what a content.
+
+The operational semantics of this would be that ``action`` is defined as a verb, that when used in a fact will require a ``person`` individual as subject of the fact, and that in such a fact, it may have an object or modifier (labelled ``what``) of type ``content`` (i.e., a content object).
+
+We can now define more verbs derived from ``action``, that inherit its (just one) modifiers::
+
+  a person can view (action).
+  a person can edit (action).
+
+Another verb that affects people that we are going to define is ``wants``. Whenever a user attempts to perform an action on the system (calls a URL mapped to a document object, clicks an edit button, etc.), we will tell the metadata backend (npl) that the user wants to perform the action. A basic pattern for the metadata rules will be "if someone wants to do such thing, and this and that conditions are met, (s)he does such thing". Therefore, a basic pattern for the views will be to tell nl that a user wants to do something, extend the knowledge base, and then ask whether the user does it.::
+
+  a person can wants what a exists.
+
+By using ``exists`` as the type of modifier, we are saying that the modifiers of ``wants`` must be predicates.
 
 Now we define a fairly general verb, ``has``, that can have anything as subject and can have two modifiers, ``what``, that can be any thing, and ``where``, that has to be a context::
 
@@ -37,7 +73,7 @@ Next, let's define 2 nouns: ``role`` and ``permission``. As we have hinted above
   permission are thing.
   role are thing.
 
-We could now start to define a few proper names for our ontology::
+We could now define a few more proper names for our ontology::
 
   member isa role.
   editor isa role.
@@ -74,12 +110,6 @@ Next, we define a ``status`` noun, that refers to the different workflow states 
   status are thing.
   public isa status.
   private isa status.
-
-And now, we will define verbs that refer to the different actions that people can perform with content objects. First, we define an abstract ``action`` verb that will be the ancestor of any other action::
-
-  a person can action what a content.
-  a person can view (action).
-  a person can edit (action).
 
 We now define an abstract workflow action, that will be primitive to any workflow action::
 
