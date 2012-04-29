@@ -1,18 +1,5 @@
-npl language essentials
-=======================
-
-**npl** is a logic programming language. In the use of **npl** there
-are basically 4 stages:
-
- * Define terms;
- * Build statements and rules with those terms;
- * Extend the set of statements and rules to all logical consequences;
- * Query that extended set.
-
-I'm going to describe the **npl** language going through its BNF grammar, from
-top down. To illustrate the different constructs of the language, I will
-be taking pieces from
-`this npl test <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl>`_.
+language essentials
+===================
 
 Sentences
 ----------

@@ -1,6 +1,6 @@
 
 Tutorial: A content management system
-====================================
+=====================================
 
 In this section we will try to develop a more complex ontology that might be used as the metadata backend for a content management system (CMS). Such a CMS would basically consist of the following parts:
 
@@ -11,20 +11,20 @@ In this section we will try to develop a more complex ontology that might be use
 
 The metadata backend would therefore know about content types, users, permissions, workflows, etc., and is the only part we will develop here.
 
-So let's start by defining a ``person`` noun:
+So let's start by defining a ``person`` noun::
 
   person are thing.
 
-The first verb that affects people that we are going to define is ``wants``: Whenever a user attempts to perform an action on the system (calls a URL, clicks a button, etc.), we will tell the metadata backend (nl) that the user wants to perform the action. A basic pattern for the metadata rules will be "if someone wants to do such thing, and this and that conditions are met, (s)he does such thing". Therefore, a basic pattern for the views will be to tell nl that a user wants to do something, extend the knowledge base, and then ask whether the user does it. We might have developed an alternative ontology using "can", defining a basic rule with the form "if someone wants to do X, and can do X, then (s)he does X", and afterwards defining rules with a basic pattern "if such and such conditions are met, user X can do Y". This alternative ontology would be much less efficient, though, since we would end up with loads and loads of (possibly useless) sentences with the form "user X can do Y with content Z".
+The first verb that affects people that we are going to define is ``wants``: Whenever a user attempts to perform an action on the system (calls a URL, clicks a button, etc.), we will tell the metadata backend (npl) that the user wants to perform the action. A basic pattern for the metadata rules will be "if someone wants to do such thing, and this and that conditions are met, (s)he does such thing". Therefore, a basic pattern for the views will be to tell nl that a user wants to do something, extend the knowledge base, and then ask whether the user does it::
 
   a person can wants what a exists.
 
-We need a "content" class of things. ``content`` will be the noun of all content objects, and the various content types (e.g., document) will be classes derived from ``content``.
+We need a "content" class of things. ``content`` will be the noun of all content objects, and the various content types (e.g., document) will be classes derived from ``content``::
 
   content are thing.
   document are content.
 
-Now we define a fairly general verb, ``has``, that can have anything as subject and can have two modifiers, ``what``, that can be any thing, and ``where``, that has to be a context:
+Now we define a fairly general verb, ``has``, that can have anything as subject and can have two modifiers, ``what``, that can be any thing, and ``where``, that has to be a context::
 
   context are thing.
 
@@ -32,12 +32,12 @@ Now we define a fairly general verb, ``has``, that can have anything as subject 
 
 We will use ``has`` for various things. For example, to tell the system that a certain user has a certain role in some context, or that a certain role has a certain permission, or that a certain content object has some workflow state.
 
-Next, let's define 2 nouns: ``role`` and ``permission``. As we have hinted above, roles are related with permissions through the verb ``has``.
+Next, let's define 2 nouns: ``role`` and ``permission``. As we have hinted above, roles are related with permissions through the verb ``has``::
 
   permission are thing.
   role are thing.
 
-We could now start to define a few proper names for our ontology:
+We could now start to define a few proper names for our ontology::
 
   member isa role.
   editor isa role.
@@ -56,7 +56,7 @@ We could now start to define a few proper names for our ontology:
   manager [has what edit_perm] onwards.
   manager [has what manage_perm] onwards.
 
-We can now assert that, for whichever context, the admin person has the manager role:
+We can now assert that, for whichever context, the admin person has the manager role::
 
   admin isa person.
 
@@ -65,33 +65,33 @@ We can now assert that, for whichever context, the admin person has the manager 
   then:
     admin [has what manager, where Context1] onwards.
 
-We now define a verb, ``located``, that allows us to locate content objects in contexts:
+We now define a verb, ``located``, that allows us to locate content objects in contexts::
 
   a content can located where a context.
 
-Next, we define a ``status`` noun, that refers to the different workflow states that a content object can be in. As a starting point, we shall define 2 different states, public and private:
+Next, we define a ``status`` noun, that refers to the different workflow states that a content object can be in. As a starting point, we shall define 2 different states, public and private::
 
   status are thing.
   public isa status.
   private isa status.
 
-And now, we will define verbs that refer to the different actions that people can perform with content objects. First, we define an abstract ``action`` verb that will be the ancestor of any other action:
+And now, we will define verbs that refer to the different actions that people can perform with content objects. First, we define an abstract ``action`` verb that will be the ancestor of any other action::
 
   a person can action what a content.
   a person can view (action).
   a person can edit (action).
 
-We now define an abstract workflow action, that will be primitive to any workflow action:
+We now define an abstract workflow action, that will be primitive to any workflow action::
 
   a person can wfaction (action).
   a person can publish (wfaction).
   a person can hide (wfaction).
   
-Now we define a ``required`` verb, that is used to state that a certain permission is required to perform a given action over any content that is in a certain workflow state. Note that in this case, we are using an actual verb, and not a predicate, as the modifier for the ``required`` verb: We define it with a ``verb`` modifier. For the moment, we can not set bounds to the possible verbs that can be used as modifiers for these verbs: we use ``verb``, that is the only class we have for verbs.
+Now we define a ``required`` verb, that is used to state that a certain permission is required to perform a given action over any content that is in a certain workflow state. Note that in this case, we are using an actual verb, and not a predicate, as the modifier for the ``required`` verb: We define it with a ``verb`` modifier. For the moment, we can not set bounds to the possible verbs that can be used as modifiers for these verbs: we use ``verb``, that is the only class we have for verbs::
 
   a permision can required to a verb, over a status.
 
-At this point, we can define a rule that, when someone wants to perform an action over some content, decides whether (s)he is allowed to perform it or not, according to her roles and to the workflow state of that content. We want to assert that, if someone wants to perform some action on some content, and that content has some state and is located in some context, and the person has some role in that context that has the required permission to perform that action over that workflow state, then (s)he performs it:
+At this point, we can define a rule that, when someone wants to perform an action over some content, decides whether (s)he is allowed to perform it or not, according to her roles and to the workflow state of that content. We want to assert that, if someone wants to perform some action on some content, and that content has some state and is located in some context, and the person has some role in that context that has the required permission to perform that action over that workflow state, then (s)he performs it::
 
   if:
     Person1 [wants to [ActionVerb1 what Content1]] at I1;
@@ -106,7 +106,7 @@ At this point, we can define a rule that, when someone wants to perform an actio
 
 Note the use of the ``ActionVerb1`` verb variable to range over actual ``action`` verbs.
 
-We can now protect some actions with permissions:
+We can now protect some actions with permissions::
 
   view_perm [required to view, over public] onwards.
   edit_perm [required to edit, over public] onwards.
@@ -115,14 +115,14 @@ We can now protect some actions with permissions:
   manage_perm [required to edit, over private] onwards.
   manage_perm [required to publish, over private] onwards.
 
-Next, we are going to give meaning to workflow actions. For that, we are going to define a ``workflow`` noun, an ``assigned`` verb that will relate workflows to content types (depending on the context the content object is in), and another verb ``has_transition`` that relates a workflow with an initial and a final workflow state and the workflow action that performs the transition:
+Next, we are going to give meaning to workflow actions. For that, we are going to define a ``workflow`` noun, an ``assigned`` verb that will relate workflows to content types (depending on the context the content object is in), and another verb ``has_transition`` that relates a workflow with an initial and a final workflow state and the workflow action that performs the transition::
 
   workflow are thing.
 
   a workflow can assigned to a noun, where a context.
   a workflow can has_transition start a status, end a status, by a verb.
 
-With these terms in place, we can add a rule that states that, if some person performs some workflow action on some content, and that content is in the initial state of the transition corresponding to that action, and that action embodies the transition of some workflow that is assigned to the content type of the content object in the context in which the object is located, then the object ceases to be in the initial state and starts being in the final state of the transition:
+With these terms in place, we can add a rule that states that, if some person performs some workflow action on some content, and that content is in the initial state of the transition corresponding to that action, and that action embodies the transition of some workflow that is assigned to the content type of the content object in the context in which the object is located, then the object ceases to be in the initial state and starts being in the final state of the transition::
 
   if:
     Person1 [Wfaction1 what Content1] at I1;
@@ -135,7 +135,7 @@ With these terms in place, we can add a rule that states that, if some person pe
     Content1 [has what Status2] until D1, D2, D3;
     finish D4.
 
-So, let's provide a workflow for ``document`` and assign it to ``document`` in the basic context, and a couple of transitions for that workflow:
+So, let's provide a workflow for ``document`` and assign it to ``document`` in the basic context, and a couple of transitions for that workflow::
 
   doc_workflow isa workflow.
 
@@ -147,7 +147,7 @@ So, let's provide a workflow for ``document`` and assign it to ``document`` in t
 With all this, we can start adding people and content objects, and test our ontology so far.
 
 
-So, let's star using this ontology. We are going to define 2 contexts, 2 documents, one located in each context, both with an initial state private, and two people, each with the manager and editor role in opposite contexts.
+So, let's star using this ontology. We are going to define 2 contexts, 2 documents, one located in each context, both with an initial state private, and two people, each with the manager and editor role in opposite contexts::
 
   john isa person.
   mary isa person.
@@ -158,7 +158,7 @@ So, let's star using this ontology. We are going to define 2 contexts, 2 documen
   doc_of_john isa document.
   doc_of_mary isa document.
 
-Let's start time:
+Let's start time::
 
   now.
 
@@ -171,11 +171,11 @@ Let's start time:
   doc_of_mary [located where context_of_mary] onwards.
   doc_of_mary [has what private] onwards.
 
-We extend the knowledge base:
+We extend the knowledge base::
 
   extend.
 
-And now we can see that Mary cannot view or edit John's document, but john can:
+And now we can see that Mary cannot view or edit John's document, but john can::
 
   mary [wants what [view what doc_of_john]] now.
   mary [wants what [edit what doc_of_john]] now.
@@ -196,11 +196,11 @@ And now we can see that Mary cannot view or edit John's document, but john can:
   john [edit what doc_of_john] now?
   True
 
-Time passes:
+Time passes::
 
   now.
 
-Mary cannot publish John's doc, but John can
+Mary cannot publish John's doc, but John can::
 
   mary [wants what [publish what doc_of_john]] now.
   john [wants what [publish what doc_of_john]] now.
@@ -213,7 +213,7 @@ Mary cannot publish John's doc, but John can
   john [publish what doc_of_john] now?
   True
 
-And, now, john's document is in the public state, and so, Mary can view it, but Mary's is private and John cannot view it:
+And, now, john's document is in the public state, and so, Mary can view it, but Mary's is private and John cannot view it::
 
   doc_of_john [has what public] now?
   True
