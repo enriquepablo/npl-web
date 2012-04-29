@@ -12,7 +12,10 @@ are basically 4 stages:
 I'm going to describe the **npl** language going through its BNF grammar, from
 top down. To illustrate the different constructs of the language, I will
 be taking pieces from
-`tests in <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/>`_.
+`these tests <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/>`_.
+
+Contents
+--------
 
 .. toctree::
    :maxdepth: 3

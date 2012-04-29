@@ -9,6 +9,17 @@ since Gottlob Frege uncovered it.
 Here I will try to introduce this problem
 and my proposed solution.
 
+Note that this "motivation" page
+is mainly for logicians.
+If you just want to use the language
+because it seems useful,
+you can (must!) leave this page
+and head on to the `reference <npl_ref>`_ or the `tutorial <tut>`_.
+And if you are a logician,
+please bear in mind that
+I am a self taught "logician",
+and do not expect the orthodox academic terminology
+of any established line of thought.
 
 Historical introduction
 -----------------------
