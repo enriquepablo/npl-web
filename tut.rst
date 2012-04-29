@@ -2,7 +2,7 @@
 Tutorial: A content management system
 =====================================
 
-In this section we will try to develop a more complex ontology that might be used as the metadata backend for a content management system (CMS). Such a CMS would basically consist of the following parts:
+In this section we will try to develop a not so simple ontology that might be used as the metadata backend for a content management system (CMS). Let us imagine that such a CMS would basically consist of the following parts:
 
  #. A web application: mainly an HTTP request dispatcher and a system of views that the dispatcher calls to get responses for the requests;
  #. A database where actual content (text, images, etc.) is stored;
