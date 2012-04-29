@@ -34,6 +34,7 @@
 
   <body>
 
+    <form class="search" action="{{ pathto('search') }}" method="get">
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -43,9 +44,23 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="{{ pathto(master_doc) }}">npl</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li {%- if pagename == 'npl_ref' %} class="active"{%- endif %}><a href="{{ pathto('npl_ref') }}">reference</a></li>
+              <li {%- if pagename == 'tut' %} class="active"{%- endif %}><a href="{{ pathto('tut') }}">tutorial</a></li>
+              <li {%- if pagename == 'npl_install' %} class="active"{%- endif %}><a href="{{ pathto('npl_install') }}">install</a></li>
+              <li {%- if pagename == 'support' %} class="active"{%- endif %}><a href="{{ pathto('support') }}">support</a></li>
+            </ul>
+            <!--p class="navbar-text pull-right">
+              <input type="text" name="q" />
+              <input type="hidden" name="check_keywords" value="yes" />
+              <input type="hidden" name="area" value="default" />
+            </p-->
+          </div>
         </div>
       </div>
     </div>
+    </form>
 
     <div class="container-fluid">
       <div class="row-fluid">
