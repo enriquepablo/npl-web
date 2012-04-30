@@ -129,9 +129,6 @@ top down. To illustrate the different constructs of the language, I will
 be refering to pieces from
 `these tests <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/>`_.
 
-Contents
-~~~~~~~~
-
 .. toctree::
    :maxdepth: 3
 
