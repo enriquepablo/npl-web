@@ -73,9 +73,13 @@ To build a duration, we can use the reserved word ``onwards`` as the time
 component. This will set the starting instant of the duration to the present,
 and will set a special value
 as the end of the duration. This value will stand for the 'present' time of the
-system, irrespectively of its changes. So, if the present time is 10, the final
-instant of these durations will evaluate to 10; and if we change the present
-(through ``now.``) to 12, they will evaluate to 12.
+system, irrespectively of its changes. So, if the present time is 10,
+and we assert a fact ``onwards``, both the starting and the final
+instant of its duration will evaluate to 10;
+but if we change the present
+(through ``now.``) to 12,
+the starting instant will still evaluate to 10,
+whereas the end will evaluate to 12.
 
 Time in conditions
 ~~~~~~~~~~~~~~~~~~
