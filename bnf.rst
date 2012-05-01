@@ -75,11 +75,10 @@ We define a new noun by relating it with another (already defined) noun through
 the reserved word ``are``. To get started, we use a primitive predefined noun,
 ``thing``. An example of a noun definition is ``person are thing.``.
 
-Nouns (and terms in general) must start with
+The symbols for atomic terms in general must start with
 a lower case letter followed by
 any number of lower case letters or underscores,
-and may en in any number of digits.
-2 underscores in a row are forbidden.
+and 2 underscores in a row are forbidden.
 
 For more examples, you can look at
 `lines 20-24 in this test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L20>`_.
@@ -93,6 +92,9 @@ Name definitions
 
 Proper names are defined relating them with a noun through the reserved word
 ``isa``. An example is ``john isa person.``.
+
+Name terms are special among the rest of terms in that they may end in any number of digits.
+The rest of terms must be terminated with an lower case letter.
 
 For more examples, you can look at
 `lines 26-35 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L26>`_.
@@ -124,10 +126,12 @@ the terms that are of that type are the terms related with the type term
 through ``isa``. Therefore, we have six mayor types of term:
 ``noun`` (what we called "nouns" when introducing the `basic programming elements <npl_ref#basic-programming-elements>`_),
 ``verb`` (the verbs),
-``thing``(the names),
-``exists`` (the primitive predifined verb, that as type corresponds to the predicates),
-``number``, and ``time``,
-and any number of subtypes of ``thing`` and ``exists``.
+``thing``(the proper names),
+``exists`` (which is the primitive predifined verb, and as type corresponds to the predicates),
+``number`` (the numbers), and ``time``,
+and any number of subtypes of ``thing``
+(i.e., the programmer defined nouns)
+and ``exists`` (the programmer defined verbs).
 Metanouns would correspond to the hidden term ``word``.
 
 For example, ``doc1`` is a term of type ``thing`` (and also of type ``document``),
@@ -252,6 +256,7 @@ An atomic fact matches a condition in a rule if (but not only if) they are
 identical (ignoring the order of modifiers in the predicate). It also matches
 when they are identical except that the atomic fact specifies more modifiers
 than the condition.
+Also, the order of the modifiers is immaterial for matching.
 
 We can use logical variables in place of terms in the conditions and
 consecuences of a rule. A logical variable is a symbol that starts with a
@@ -281,6 +286,14 @@ we define a verb ``located``, which we use in a rule in
 With this rule, and the facts in
 `lines 51 and 52 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L51>`_,
 the system will conclude that ``doc1 [located where ctx2]``.
+
+Although we are seeing different types
+of variables corresponding to the different types of terms,
+under the hood there is really just one type of variable.
+The different forms of variables is just syntactic sugar
+for constraining the variable.
+For example, ``Person1``
+would correspond to something like "X1 where X1 isa person".
 
 Predicate variables
 -------------------
