@@ -48,11 +48,11 @@ we can distinguish several classes:
   * Punctuation: dots separate sentences,
     commas are variously used,
     and spacing separate elements;
-  * Logical connectives: conjunction and implication,
+  * Logical connectives: conjunction (``;``) and implication (``if: ... then: ...``),
     used to build rules, that are a class of complex element;
   * Variables, again used in the construction of rules;
-  * Relations, mainly set and arithmetic relations,
-    the set relations used to define non-logical elements
+  * Relations, mainly set and arithmetic relations;
+    the set relations used to define non-logical elements,
     and the arithmetic relations as conditions in rules;
   * Operators, mainly the predicate operator ``[ ... ]``,
     which we will shortly touch again, and
@@ -82,6 +82,9 @@ Complex elements
 There are a few classes of complex elements available
 to give shape to the knowledge in the kb.
 
+Definitions
+###########
+
 First, we have constructs that allow us to define
 new non-logical terms.
 There are three types of term that we can define:
@@ -93,6 +96,9 @@ and assert (through ``isa``)
 that it "belongs to" the term ``person``,
 of type noun.
 
+Predicates
+##########
+
 Then we have predicate elements.
 Predicates are composed
 with the predicate operator ``[]``,
@@ -101,12 +107,48 @@ These objects can be terms of any type.
 Predicates are themselves terms,
 and can thus match variables in rules,
 or appear as objects in other predicates.
+In the example in the `home page <index>`_,
+a predicate would be ``loves sue``.
+This would be missing the ``[]`` operator,
+that is needed when predicates are used as objects in other predicates;
+so a more correct form would be ``[loves sue]``.
+But this is not yet totally correct syntax.
+We can have more than one object in a predicate,
+and, in different facts,
+the same verb can form the predicate
+with a different number of objects.
+Thus, we need to label the objects.
+To see this, consider that we have
+a "goes" verb that takes 2 objects to form a predicate,
+a "from" object and a "towards" object.
+And consider that we want to use this verb
+to form a fact where we only talk about
+where someone goes,
+and not where she comes from.
+Using "[goes madrid]" would not tell us
+whether "madrid" is a "towards" or a "from" object.
+So, the syntactically correct form would be
+``[loves who sue]``.
+Obviously, we would have to incorporate the ``who`` label
+in the definition of the ``loves`` verb,
+and in the rules.
+
+Facts
+#####
 
 Then we have fact elements.
 Facts are composed of a subject, a predicate, and an optional time.
 The subject can be any atomic term,
 and the predicate has to be a predicate term.
 We will leave time out of this introduction.
+In the example in the `home page <index>`_,
+a fact would be ``mike loves sue``.
+Incorporating the corrections
+explained for predicates,
+we would have ``mike [loves who sue]``.
+
+Rules
+#####
 
 Then we have rule elements.
 Rules are composed of a set of
@@ -115,11 +157,14 @@ and another set of complex elements, the consecuences.
 Conditions and consecuences can contain variables,
 and all variables in the consecuences must appear in the conditions.
 They can be definitions, facts, arithmetic conditions,
-or several other special conditions.
+or several other special constructs.
 When we extend the kb,
 asserted facts match conditions in rules,
 and when all conditions in a rule are satisfied,
 it consecuences are asserted.
+
+Questions
+#########
 
 Then we have questions,
 that are basically correspond to standalone rule conditions,
@@ -131,8 +176,8 @@ Language reference
 Next I'm going to describe the **npl** language
 in a bit more detail
 going through its BNF grammar.
-If in the introduction I have gone from bottom to top element,
-from now I will go
+If in the previous introduction I have gone from bottom to top element,
+from here I will go
 top down. To illustrate the different constructs of the language, I will
 be refering to pieces from
 `these tests <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/>`_.
