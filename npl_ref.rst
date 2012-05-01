@@ -1,8 +1,7 @@
 The npl language
 ================
 
-**npl** is a logic programming language. In the use of **npl** there
-are basically 4 stages:
+In the use of **npl** there are basically 4 stages:
 
  * Define terms;
  * Build statements and rules with those terms, and add them to a knowledge base (a.k.a. kb);
@@ -15,7 +14,7 @@ Basic programming elements
 **npl** provides three basic elements for writing programs:
 atomic elements,
 complex elements for adding to the kb,
-and orders to manipulate the kb in different ways.
+and orders (commands) to manipulate the kb in different ways.
 
 We also have macros,
 but macros are another language built on top of **npl**,
@@ -36,10 +35,9 @@ Non-logical elements are defined by the programmer.
 Among the logical elements,
 we can distinguish several classes:
 
-  * Comments: lines starting with "#";
-  * Punctuation: (dots separate sentences,
-    commas are variously used),
-    and spacing (separate elements);
+  * Punctuation: dots separate sentences,
+    commas are variously used,
+    and spacing separate elements;
   * Logical connectives: conjunction and implication,
     used to build rules, that are a class of complex element;
   * Variables, again used in the construction of rules;
