@@ -82,7 +82,7 @@ and may en in any number of digits.
 2 underscores in a row are forbidden.
 
 For more examples, you can look at
-`lines 20-24 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L20>`_.
+`lines 20-24 in this test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L20>`_.
 
 Name definitions
 ~~~~~~~~~~~~~~~~
