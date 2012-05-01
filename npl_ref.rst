@@ -4,9 +4,19 @@ The npl language
 In the use of **npl** there are basically 4 stages:
 
  * Define terms;
- * Build statements and rules with those terms, and add them to a knowledge base (a.k.a. kb);
+ * Build facts and rules with those terms, and add them to a knowledge base (a.k.a. kb);
  * Extend the kb to all logical consequences;
  * Query the kb.
+
+In the example in the `home page <index>`_,
+the first four lines are defining terms
+(``person``, ``mike``, ``sue``, ``loves``)
+using predefined terms (``thing``, ``verb``),
+and the fifth to seventh lines are a fact and a rule
+built from those terms.
+If we extend the kb holding the program,
+and query it,
+we will find the, in this case, only conclussion: ``sue loves mike``.
 
 Basic programming elements
 --------------------------

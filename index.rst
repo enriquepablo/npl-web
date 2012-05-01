@@ -25,7 +25,7 @@ to interpersonal relations::
 With this, **npl** would conclude that ``sue loves mike`` [#f1]_.
 
 .. toctree::
-   :maxdepth: 3
+   :hidden:
 
    npl_ref
    Tutorial <tut>
@@ -33,6 +33,8 @@ With this, **npl** would conclude that ``sue loves mike`` [#f1]_.
    npl_install
    npl_interfaces
    support
+
+-----
 
 .. rubric:: Footnotes
 
