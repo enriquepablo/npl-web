@@ -69,14 +69,20 @@ Noun definitions
 .. productionlist::
     noun_def : `TERM` `ARE` `TERM`
     ARE : "are"
-    TERM : <a lower case letter followed by any number of lower case letters, underscores, and digits. 2 underscores in a row are forbidden>
+    TERM : "[a-z][a-z_]*\d*"
 
 We define a new noun by relating it with another (already defined) noun through
 the reserved word ``are``. To get started, we use a primitive predefined noun,
 ``thing``. An example of a noun definition is ``person are thing.``.
 
+Nouns (and terms in general) must start with
+a lower case letter followed by
+any number of lower case letters or underscores,
+and may en in any number of digits.
+2 underscores in a row are forbidden.
+
 For more examples, you can look at
-`lines 1-5 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L2>`_.
+`lines 20-24 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L20>`_.
 
 Name definitions
 ~~~~~~~~~~~~~~~~
@@ -89,7 +95,7 @@ Proper names are defined relating them with a noun through the reserved word
 ``isa``. An example is ``john isa person.``.
 
 For more examples, you can look at
-`lines 7-16 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L7>`_.
+`lines 26-35 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L26>`_.
 
 Types of terms
 ~~~~~~~~~~~~~~
@@ -99,9 +105,9 @@ among 2 nouns has the same form as the subclass relation among 2 classes, and
 the relation established by ``isa`` among a name and a noun has the same form as
 the relation between an individual and a class it belongs to. So, for example,
 the mentioned definitions in the
-`the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl>`_.
+`the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L20>`_
 entail that ``document are thing``, or that
-``mary isa thing``. This means that if we ask the system for a ``thing``, ``mary``
+``mary isa thing``. Also, this means that if we ask the system for a ``thing``, ``mary``
 will be retrieved, and if in a rule we require a ``thing``, ``mary`` will match.
 
 This class structure is explicit in the case of nouns and names, and is
@@ -115,9 +121,14 @@ predefined term ``verb``, and all nouns with ``noun``, all numbers with
 
 This allows us to talk about types of terms. A type of terms is a term, and
 the terms that are of that type are the terms related with the type term
-through ``isa``. Therefore, we have six mayor types of term: ``noun``, ``verb``,
-``thing``, ``exists`` (the primitive predefined verb), ``number``, and ``time``,
+through ``isa``. Therefore, we have six mayor types of term:
+``noun`` (what we called "nouns" when introducing the `basic programming elements <npl_ref#basic-programming-elements>`_),
+``verb`` (the verbs),
+``thing``(the names),
+``exists`` (the primitive predifined verb, that as type corresponds to the predicates),
+``number``, and ``time``,
 and any number of subtypes of ``thing`` and ``exists``.
+Metanouns would correspond to the hidden term ``word``.
 
 For example, ``doc1`` is a term of type ``thing`` (and also of type ``document``),
 and ``document`` is a term of type ``noun``.
@@ -201,7 +212,7 @@ give the label that the modifier will take, connected through the reserved word
 
 So, for
 example, in
-`lines 18-21 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L18>`_,
+`lines 37-40 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L37>`_,
 we define verbs that express actions that a person can perform on
 content. For this we use the primitive predefined verb
 we mentioned earlier: ``exists``.
@@ -260,15 +271,15 @@ For a first example, we need to add a couple more of BNF rules:
 .. productionlist::
     subject : `VAR`
     object : `VAR`
-    VAR : <an uppercase letter followed by any number of lower case letters, digits and underscores and ending in any number of digits. Double underscores are forbidden.>
+    VAR : "([A-Z][a-z_]*)(Verb|Noun|Word)?\d+"
 
 So, for example, in
-`line 23 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L23>`_
+`line 42 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L42>`_
 we define a verb ``located``, which we use in a rule in
-`line 25 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L25>`_.
+`line 44 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L44>`_.
 
 With this rule, and the facts in
-`lines 32 and 33 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L32>`_,
+`lines 51 and 52 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L51>`_,
 the system will conclude that ``doc1 [located where ctx2]``.
 
 Predicate variables
@@ -286,12 +297,12 @@ predicate).
 
 To provide a working example, we define a couple of verbs that take a
 predicate as modifier, in
-`lines 41 and 42 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L41>`_,
+`lines 60 and 61 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L60>`_,
 and build a rule with them in
-`line 44 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L44>`_.
+`line 63 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L63>`_.
 
 With this rule, and the facts in
-`lines 51-52 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L51>`_,
+`lines 70-71 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L70>`_,
 the system will conclude that ``sue [view what doc1]``.
 
 Verb variables
@@ -306,15 +317,15 @@ use variables in rules that range over verbs. We do this by capitalizing the
 name of a verb, and appending to it "Verb" and an integer. for example, a verb
 variable made from ``locate`` would be ``LocateVerb1``. To show a more complete
 example of this, we define a verb ``may`` in
-`line 60 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L60>`_,
+`line 79 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L79>`_,
 that will take a verb as modifier, and a rule that uses ``may`` in
-`line 65 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L65>`_.
+`line 84 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L84>`_.
 Now, if we add the facts in
-`lines 72, 73 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L72>`_,
+`lines 92, 93 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L92>`_,
 the system will conclude that ``mary [view what doc1]``.
 
 So, as seen in
-`line 66 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L66>`_,
+`line 85 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L85>`_,
 we can use a verb variable in a predicate with modifiers. Also without
 modifiers, just by itself in the predicate, like ``[Content_actionVerb1]``. This
 stands for a predicate where the content_action verb is alone without
@@ -322,7 +333,7 @@ modifiers, as opposed to ``[Content_action1]`` where nothing is said of the
 number of modifiers.
 
 If, in the rule in
-`line 65 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L65>`_,
+`line 84 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L84>`_,
 we had not wanted to relate the context in which the content
 is located with the context in which the person is allowed to do the content action,
 we might have said::
@@ -358,5 +369,5 @@ give the name variable inmediately followed by the noun variable enclosed in
 parentheses. For example, ``Person1(PersonNoun1)``.
 
 In the rule in
-`line 133 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L133>`_
+`line 151 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L151>`_
 there is an example of the use of noun variables.

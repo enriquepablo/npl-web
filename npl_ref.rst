@@ -115,7 +115,7 @@ so a more correct form would be ``[loves sue]``.
 But this is not yet totally correct syntax.
 We can have more than one object in a predicate,
 and, in different facts,
-the same verb can form the predicate
+the same verb can form predicates
 with a different number of objects.
 Thus, we need to label the objects.
 To see this, consider that we have
@@ -131,7 +131,7 @@ So, the syntactically correct form would be
 ``[loves who sue]``.
 Obviously, we would have to incorporate the ``who`` label
 in the definition of the ``loves`` verb,
-and in the rules.
+and in the rule.
 
 Facts
 #####
@@ -161,7 +161,7 @@ or several other special constructs.
 When we extend the kb,
 asserted facts match conditions in rules,
 and when all conditions in a rule are satisfied,
-it consecuences are asserted.
+its consecuences are asserted.
 
 Questions
 #########
@@ -170,6 +170,12 @@ Then we have questions,
 that are basically correspond to standalone rule conditions,
 and that return the sentences in the kb that match them.
 
+Orders
+######
+
+Finally, we have orders, that do not have any common form.
+An example of an order is ``extend``, that extends the kb.
+
 Language reference
 ------------------
 
@@ -177,7 +183,7 @@ Next I'm going to describe the **npl** language
 in a bit more detail
 going through its BNF grammar.
 If in the previous introduction I have gone from bottom to top element,
-from here I will go
+here I will go
 top down. To illustrate the different constructs of the language, I will
 be refering to pieces from
 `these tests <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/>`_.
