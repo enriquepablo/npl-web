@@ -1,10 +1,28 @@
-
 npl
 ###
 
-**npl** is a general purpose logic system, simple, yet extremelly powerful. It is
+**npl** is a programming language for building `expert systems <http://en.wikipedia.org/wiki/Expert_systems>`_.
+It is very simple, yet extremelly powerful. It is
 distributed under the `GNU General Public License V3 <http://www.gnu.org/licenses/gpl.txt>`_.
 
+Like other expert system languages,
+**npl** deals with rules and facts.
+Various facts can make a rule applicable.
+An applicable rule is then asserted.
+As an example,
+a program that applies
+Newton's third law of motion
+to interpersonal relations::
+
+  a person is a thing.
+  mike is a person.
+  sue is a person.
+  loves is a verb.
+  mike loves sue.
+  if: Person1 Verb1 Person2;
+  then: Person2 Verb1 Person1.
+
+With this, **npl** would conclude that ``sue loves mike`` [#f1]_.
 
 .. toctree::
    :maxdepth: 3
@@ -15,3 +33,7 @@ distributed under the `GNU General Public License V3 <http://www.gnu.org/license
    npl_install
    npl_interfaces
    support
+
+.. rubric:: Footnotes
+
+.. [#f1] For clarity, in these examples I have removed a little bit of necessary syntax, that is only needed to allow for more complex developments.
