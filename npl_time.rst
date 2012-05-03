@@ -24,10 +24,10 @@ monotonic. And non-monotonicity scares the hell out of me. So, we isolate time
 in a reserved place and treat it very carefully, and make it optional.
 
 Time can thus be given as an instant or as a duration. To assert facts,
-or to specify conditions in rules, we can only use the present tense.
-We assume a closed world were everything is in known the instant it happens,
-i.e., we know everything about the past and the present but nothing about the
-future.
+we can only use the present tense.
+We assume a closed world where everything is in known the instant it happens,
+i.e., we know everything about the past but nothing about the
+future, and are changing (learning) in the present.
 
 Instants
 ~~~~~~~~
@@ -104,8 +104,8 @@ The ``during`` condition
     DURING : "during"
 
 We can build a special condition with ``during``, where we give an instant
-variable and any number of duration variables like ``I1 during D1, D2, D3``.
-This condition will evaluate to true when the intant that matches ``I1``
+variable and any number of duration variables, like ``I1 during D1, D2, D3``.
+This condition will evaluate to true when the instant that matches ``I1``
 is contained in the durations that match ``D1``, ``D2``, and ``D3``.
 
 Time in consecuences

@@ -53,14 +53,20 @@ We can also use variables in fact counts. For example, to count how many
 trips there have been to egipt, we would
 ``count Person1 [trips to egipt] at I1``.
 
-We must stress again that counting facts only makes sense under a closed world
-assumption. Under an open world assumption, the same set of facts must produce
-the same set of consecuences under any circumstances, whatever the order they
-are asserted. 
+In **npl**, counting facts only makes sense if we use its time facilities,
+and use a further restriction:
+that we can only make one assertion per instant.
+Under the assumption of a timeless interpretation,
+the same set of facts must produce
+the same set of consecuences under any circumstances,
+whatever the order they are asserted. 
 If we allow counting sentences in rules, the same set of facts
 will produce different sets of consecuences depending on the order in
-which they are added to the kb. However, if we (as we do in **npl** when we
-use the present continuous) assume that the present and the past are closed,
+which they are added to the kb.
+However, if we (as we do in **npl** when we
+use the present continuous) assume that the past is closed,
+and the present, in which things change,
+only accepts one assertion at a time,
 the order in which we add the facts is part of the general truth, and the same
 set of facts added in different order would represent different realities.
 

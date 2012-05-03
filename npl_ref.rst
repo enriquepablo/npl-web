@@ -3,16 +3,16 @@ The npl language
 
 In the use of **npl** there are basically 4 stages:
 
- * Define :term:`terms`;
+ * Define :term:`terms <term>`;
  * Build facts and rules with those terms, and add them to a :term:`knowledge base` (a.k.a. kb);
  * Extend the kb to all logical consequences;
  * Query the kb.
 
-In the example in the `home page <index>`_,
+In the example in the :doc:`home page <index>`,
 the first four lines are defining terms
 (``person``, ``mike``, ``sue``, ``loves``)
 using predefined terms (``thing``, ``verb``),
-and the fifth to seventh lines are a :term:`fact` and a rule
+and the fifth to seventh lines are a :term:`fact` and a :term:`rule`
 built from those terms.
 If we extend the kb holding the program,
 and query it,
@@ -28,7 +28,7 @@ and orders (commands) to manipulate the kb in different ways.
 
 We also have macros,
 but macros are another language built on top of **npl**,
-and we will consider them `elsewhere <npl_macros>`_.
+and we will consider them :doc:`elsewhere <npl_macros>`.
 
 atomic elements
 ~~~~~~~~~~~~~~~
@@ -68,7 +68,7 @@ for example we have not mentioned any time (or string?) related element.
 It is, however, an exhaustive list of classes of atomic elements.
 
 Non-logical elements
-################
+####################
 
 The non-logical elements are all of the "individual" class,
 which we will in general call "terms".
@@ -76,10 +76,10 @@ The main atribute of terms is that
 they can match variables in rules.
 
 We can distinguish a few types of terms.
-We have the verbs: ``exists`` and any number of non-logical verbs derived from it;
-the nouns: ``thing``, and any number of non-logical nouns derived from it;
-the proper names, all non-logical;
-and we have the numbers.
+We have verbs: ``exists`` and any number of non-logical verbs derived from it;
+nouns: ``thing``, and any number of non-logical nouns derived from it;
+proper names, all non-logical;
+and we have numbers.
 We also have the "metanouns": ``noun``, ``verb``, and ``number``.
 
 Complex elements
@@ -96,10 +96,11 @@ new non-logical terms.
 There are three types of term that we can define:
 verbs, nouns, and names. For each type we have
 a different construct.
-An example might be ``john isa person``,
-where we define a term ``john``, of type name,
+An example of a name definition
+might be ``john isa person``,
+where we define a term ``john``,
 and assert (through ``isa``)
-that it "belongs to" the term ``person``,
+that it "belongs to" the term (or "is a") ``person``,
 of type noun.
 
 Predicates
@@ -116,7 +117,7 @@ or appear as objects in other predicates.
 In the example in the `home page <index>`_,
 a predicate would be ``loves sue``.
 This would be missing the ``[]`` operator,
-that is needed when predicates are used as objects in other predicates;
+that is needed for when predicates are used as objects in other predicates;
 so a more correct form would be ``[loves sue]``.
 But this is not yet totally correct syntax.
 We can have more than one object in a predicate,
