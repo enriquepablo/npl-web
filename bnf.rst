@@ -11,7 +11,7 @@ Sentences
 
 Sentences are the top level grammatical elements. These are the elements that
 can be entered (told or asked) into npl's knowledge base (kb). There are 3
-kinds of sentences, statements questions and orders. Statements
+kinds of sentences: statements, questions, and orders. Statements
 add to the information held in the kb, and questions query the kb. Orders
 do different things to the kb.
 
@@ -50,7 +50,7 @@ There are 3 main forms of statements, all ended with a dot, which we will
 call definitions, facts, and rules.
 Definitions are used to define terms. Facts use those terms to establish
 relations among them. And rules establish relations (logical relations,
-basically implication) among the relations expressed in the terms.
+basically implication) among the relations expressed in the facts.
 
 Definition of terms
 -------------------

@@ -3,8 +3,8 @@ The npl language
 
 In the use of **npl** there are basically 4 stages:
 
- * Define terms;
- * Build facts and rules with those terms, and add them to a knowledge base (a.k.a. kb);
+ * Define :term:`terms`;
+ * Build facts and rules with those terms, and add them to a :term:`knowledge base` (a.k.a. kb);
  * Extend the kb to all logical consequences;
  * Query the kb.
 
@@ -12,7 +12,7 @@ In the example in the `home page <index>`_,
 the first four lines are defining terms
 (``person``, ``mike``, ``sue``, ``loves``)
 using predefined terms (``thing``, ``verb``),
-and the fifth to seventh lines are a fact and a rule
+and the fifth to seventh lines are a :term:`fact` and a rule
 built from those terms.
 If we extend the kb holding the program,
 and query it,
@@ -42,6 +42,9 @@ Logical elements are all predefined,
 identified by reserved words of the language.
 Non-logical elements are defined by the programmer.
 
+Logical elements
+################
+
 Among the logical elements,
 we can distinguish several classes:
 
@@ -64,17 +67,20 @@ This is not an exhaustive listing of predefined atomic elements,
 for example we have not mentioned any time (or string?) related element.
 It is, however, an exhaustive list of classes of atomic elements.
 
+Non-logical elements
+################
+
 The non-logical elements are all of the "individual" class,
 which we will in general call "terms".
 The main atribute of terms is that
 they can match variables in rules.
 
 We can distinguish a few types of terms.
-The first type are the metanouns: ``noun``, ``verb``, and ``number``.
-Then we have the verbs: ``exists`` and any number of non-logical verbs derived from it;
+We have the verbs: ``exists`` and any number of non-logical verbs derived from it;
 the nouns: ``thing``, and any number of non-logical nouns derived from it;
 the proper names, all non-logical;
-and finally we have the numbers.
+and we have the numbers.
+We also have the "metanouns": ``noun``, ``verb``, and ``number``.
 
 Complex elements
 ~~~~~~~~~~~~~~~~
@@ -91,7 +97,7 @@ There are three types of term that we can define:
 verbs, nouns, and names. For each type we have
 a different construct.
 An example might be ``john isa person``,
-where we define a term ``john`` of type name,
+where we define a term ``john``, of type name,
 and assert (through ``isa``)
 that it "belongs to" the term ``person``,
 of type noun.
@@ -197,6 +203,7 @@ be refering to pieces from
    npl_negation
    npl_questions
    npl_macros
+   npl_glossary
 
 
 

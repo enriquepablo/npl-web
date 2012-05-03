@@ -14,10 +14,10 @@ a program that applies
 Newton's third law of motion
 to interpersonal relations::
 
-  a person is a thing.
-  mike is a person.
-  sue is a person.
-  loves is a verb.
+  person are thing.
+  mike isa person.
+  sue isa person.
+  loves isa verb.
   mike loves sue.
   if: Person1 Verb1 Person2;
   then: Person2 Verb1 Person1.
