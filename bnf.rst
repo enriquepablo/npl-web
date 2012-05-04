@@ -115,7 +115,7 @@ will be retrieved, and if in a rule we require a ``thing``, ``mary`` will match.
 This class structure is explicit in the case of nouns and names, and is
 (implicitly) pervasive among the rest of terms in **npl**. So, for
 example, all predicates
-(predicates are complex terms composed of a verb and any number of modifiers,
+(predicates are complex terms composed of a verb and any number of objects,
 as we shall see below) are implicitly related by ``isa`` with their verbs.
 In addition, all verbs are to be thought of as related through ``isa`` with the
 predefined term ``verb``, and all nouns with ``noun``, all numbers with
@@ -162,25 +162,25 @@ The predicate is a complex term enclosed in square brackets, composed of a verb
 and an (optional) modification.
 
 .. productionlist::
-    modification : `modifier` `COMMA` `modification`
-                 : | `modifier`
+    modification : `object` `COMMA` `modification`
+                 : | `object`
     COMMA : ","
 
-A modification is one or more modifiers, separated by commas.
+A modification is one or more objects, separated by commas.
 
 .. productionlist::
-    modifier : `LABEL` `object`
+    object : `LABEL` `object`
     object : `TERM`
            : | `predicate`
     LABEL : <same pattern as TERM>
 
-A modifier is composed of a label and an object, that can be any kind of
+A object is composed of a label and an object, that can be any kind of
 (atomic or complex) term except a time: a noun, a verb, a name, a number, or a
 predicate.
 
 A simple example of a fact could be ``john [view what img1]``, where ``john``
 is the subject and ``[view what img1]`` the predicate, where ``view`` is the
-verb, and ``img1`` is a modifier with label ``what``.
+verb, and ``img1`` is a object with label ``what``.
 
 Definition of verbs
 -------------------
@@ -199,7 +199,7 @@ verb_def) we can specify 3 different things. First, the type of
 term that can act as subject in a fact where the new verb forms the predicate
 (given by the first TERM in the definition); second, the
 (already defined) verb(s) from which we derive the new verb (given in the
-verbs part of the definition); and third, the modifiers that the verb can take
+verbs part of the definition); and third, the objects that the verb can take
 to form the predicate (the modification_def). Both the verbs part or the
 modification_def part can be omitted. Omitting the verbs, we assume its
 parent to be ``exists``; omittin the modification_def, the verb will
@@ -210,9 +210,9 @@ inherit those of its parents.
                      : | `mod_def`
     mod_def : `LABEL` `A` `TERM`
 
-The modifiers that a verb can take are specified through mod_defs, where we
-give the label that the modifier will take, connected through the reserved word
-``a`` with the type of terms that can be used as that modifier.
+The objects that a verb can take are specified through mod_defs, where we
+give the label that the object will take, connected through the reserved word
+``a`` with the type of terms that can be used as that object.
 
 So, for
 example, in
@@ -253,10 +253,10 @@ and, when all conditions in a rule are matched, its consecuences are
 (atomically) added to the kb when we issue an ``extend.`` order.
 
 An atomic fact matches a condition in a rule if (but not only if) they are
-identical (ignoring the order of modifiers in the predicate). It also matches
-when they are identical except that the atomic fact specifies more modifiers
+identical (ignoring the order of objects in the predicate). It also matches
+when they are identical except that the atomic fact specifies more objects
 than the condition.
-Also, the order of the modifiers is immaterial for matching.
+Also, the order of the objects is immaterial for matching.
 
 We can use logical variables in place of terms in the conditions and
 consecuences of a rule. A logical variable is a symbol that starts with a
@@ -301,7 +301,7 @@ Predicate variables
 .. productionlist::
     predicate : `LBRACK` `VAR` `RBRACK`
 
-We have mentioned that we can use predicates as objects in the modifiers of other
+We have mentioned that we can use predicates as objects in the objects of other
 predicates. This means that, in rules, we must be able to use variables that
 range over predicates. We do this by building a variable from a verb, and
 enclosing it in square brackets. For example, from ``locate``, we might have
@@ -309,7 +309,7 @@ enclosing it in square brackets. For example, from ``locate``, we might have
 predicate).
 
 To provide a working example, we define a couple of verbs that take a
-predicate as modifier, in
+predicate as object, in
 `lines 60 and 61 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L60>`_,
 and build a rule with them in
 `line 63 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L63>`_.
@@ -331,7 +331,7 @@ name of a verb, and appending to it "Verb" and an integer. for example, a verb
 variable made from ``locate`` would be ``LocateVerb1``. To show a more complete
 example of this, we define a verb ``may`` in
 `line 79 in the test program <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L79>`_,
-that will take a verb as modifier, and a rule that uses ``may`` in
+that will take a verb as object, and a rule that uses ``may`` in
 `line 84 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L84>`_.
 Now, if we add the facts in
 `lines 92, 93 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L92>`_,
@@ -339,11 +339,11 @@ the system will conclude that ``mary [view what doc1]``.
 
 So, as seen in
 `line 85 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L85>`_,
-we can use a verb variable in a predicate with modifiers. Also without
-modifiers, just by itself in the predicate, like ``[Content_actionVerb1]``. This
+we can use a verb variable in a predicate with objects. Also without
+objects, just by itself in the predicate, like ``[Content_actionVerb1]``. This
 stands for a predicate where the content_action verb is alone without
-modifiers, as opposed to ``[Content_action1]`` where nothing is said of the
-number of modifiers.
+objects, as opposed to ``[Content_action1]`` where nothing is said of the
+number of objects.
 
 If, in the rule in
 `line 84 <https://github.com/enriquepablo/nl/blob/master/nl/npl_tests/cms.npl#L84>`_,
