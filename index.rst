@@ -22,7 +22,8 @@ to interpersonal relations::
   if: Person1 Verb1 Person2;
   then: Person2 Verb1 Person1.
 
-With this, **npl** would conclude that ``sue loves mike`` [#f1]_.
+The elements ``are``, ``thing``, ``isa``, ``verb``, and ``if: ... then: ...`` are primitives of the language.
+And, with this, **npl** would conclude that ``sue loves mike`` [#f1]_.
 
 .. toctree::
    :hidden:

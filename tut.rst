@@ -14,9 +14,10 @@ The metadata backend would therefore know about content types, users, permission
 Brief introduction to the anatomy of sentences in npl
 -----------------------------------------------------
 
-There are 4 basic kinds of sentences in npl. The first kind (noun definitions) have the form "<noun1> are <noun2>", and are used to define nouns in terms of other nouns. Nouns are akin to classes, where proper names would be the elements of those classes. Defining a noun in that way would mean that all individuals (proper names) of noun1 are also of noun2; that all noun1 are noun2.
+There are 4 basic kinds of sentences in npl. The first kind (noun definitions) have the form "<noun1> are <noun2>", and are used to define nouns in terms of other nouns. Nouns are akin to classes, where proper names would be the elements of those classes. Defining a noun in that way would mean that all individuals (proper names) of noun1 are also of noun2. If we enter ``dog are animal``, it will mean that all dogs are animals.
 
 The second kind of sentence (name definitions) have the form "<name> isa <noun>", and are used to define proper names in terms of nouns.
+If we enter ``bruto isa dog``, it will mean that Bruto is a dog (and, from the previous paragraph, that Bruto is an animal).
 
 The third kind have the form "<subject> [<verb> <label> <object>(, <label2> <object2> ...)] <time>", and are used to assert facts. They have a subject, that can be any kind of term, and a predicate, enclosed in square brackets. The predicate is itself composed of a verb and any number of objects (or modifiers). The modifiers are composed of a label and another term, of any kind. Finally, we have a term of type time.
 
