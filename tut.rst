@@ -19,9 +19,9 @@ There are 4 basic kinds of sentences in npl. The first kind (noun definitions) h
 The second kind of sentence (name definitions) have the form "<name> isa <noun>", and are used to define proper names in terms of nouns.
 If we enter ``bruto isa dog``, it will mean that Bruto is a dog (and, from the previous paragraph, that Bruto is an animal).
 
-The third kind have the form "<subject> [<verb> <label> <object>(, <label2> <object2> ...)] <time>", and are used to assert facts. They have a subject, that can be any kind of term, and a predicate, enclosed in square brackets. The predicate is itself composed of a verb and any number of objects (or modifiers). The modifiers are composed of a label and another term, of any kind. Finally, we have a term of type time.
+The third kind have the form "<subject> [<verb> <label> <object>(, <label2> <object2> ...)] <time>", and are used to assert facts. They have a subject, that can be any kind of term, and a predicate, enclosed in square brackets. The predicate is itself composed of a verb and any number of objects (or objects). The objects are composed of a label and another term, of any kind. Finally, we have a term of type time.
 
-The fourth kind have the form "a <term> can <verb> <label> a <term>(, <label2> a <term2> ...)", and are used to define verbs in terms of the kind of subject and modifiers that they can take on facts.
+The fourth kind have the form "a <term> can <verb> <label> a <term>(, <label2> a <term2> ...)", and are used to define verbs in terms of the kind of subject and objects that they can take on facts.
 
 For more details, see the `language reference <bnf>`_.
 
@@ -50,9 +50,9 @@ And now, we will define verbs that refer to the different actions that people ca
 
   a person can action what a content.
 
-The operational semantics of this would be that ``action`` is defined as a verb, that when used in a fact will require a ``person`` individual as subject of the fact, and that in such a fact, it may have an object or modifier (labelled ``what``) of type ``content`` (i.e., a content object).
+The operational semantics of this would be that ``action`` is defined as a verb, that when used in a fact will require a ``person`` individual as subject of the fact, and that in such a fact, it may have an object or object (labelled ``what``) of type ``content`` (i.e., a content object).
 
-We can now define more verbs derived from ``action``, that inherit its (just one) modifiers::
+We can now define more verbs derived from ``action``, that inherit its (just one) objects::
 
   a person can view (action).
   a person can edit (action).
@@ -61,9 +61,9 @@ Another verb that affects people that we are going to define is ``wants``. Whene
 
   a person can wants what a exists.
 
-By using ``exists`` as the type of modifier, we are saying that the modifiers of ``wants`` must be predicates.
+By using ``exists`` as the type of object, we are saying that the objects of ``wants`` must be predicates.
 
-Now we define a fairly general verb, ``has``, that can have anything as subject and can have two modifiers, ``what``, that can be any thing, and ``where``, that has to be a context::
+Now we define a fairly general verb, ``has``, that can have anything as subject and can have two objects, ``what``, that can be any thing, and ``where``, that has to be a context::
 
   context are thing.
 
@@ -120,7 +120,7 @@ We now define an abstract workflow action, that will be primitive to any workflo
   a person can publish (wfaction).
   a person can hide (wfaction).
   
-Now we define a ``required`` verb, that is used to state that a certain permission is required to perform a given action over any content that is in a certain workflow state. Note that in this case, we are using an actual verb, and not a predicate, as the modifier for the ``required`` verb: We define it with a ``verb`` modifier. For the moment, we can not set bounds to the possible verbs that can be used as modifiers for these verbs: we use ``verb``, that is the only class we have for verbs::
+Now we define a ``required`` verb, that is used to state that a certain permission is required to perform a given action over any content that is in a certain workflow state. Note that in this case, we are using an actual verb, and not a predicate, as the object for the ``required`` verb: We define it with a ``verb`` object. For the moment, we can not set bounds to the possible verbs that can be used as objects for these verbs: we use ``verb``, that is the only class we have for verbs::
 
   a permision can required to a verb, over a status.
 
