@@ -14,7 +14,7 @@ is mainly for logicians.
 If you just want to use the language
 because it seems useful,
 you can (must!) leave this page
-and head on to the `reference <npl_ref>`_ or the `tutorial <tut>`_.
+and head on to the :doc:`reference <npl_ref>` or the :doc:`tutorial <tut>`.
 And if you are a logician,
 please bear in mind that
 I am a self taught "logician",
